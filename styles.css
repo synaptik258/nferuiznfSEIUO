@@ -1,0 +1,159 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow: hidden;
+  height: 100vh;
+}
+
+.gradient-bg {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(270deg, #ffd1dc, #ffc6e2, #ffb6d5, #ff99cc);
+  background-size: 800% 800%;
+  animation: gradientFlow 15s ease infinite;
+  z-index: -2;
+}
+
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.text strong {
+  color: #d64f84;
+  font-weight: bold;
+  font-size: 1.1em;
+  animation: glowPulse 2s infinite ease-in-out;
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    text-shadow: 0 0 6px rgba(247, 193, 220, 0.849);
+  }
+  50% {
+    text-shadow: 0 0 12px rgba(255, 105, 180, 0.8);
+  }
+}
+
+
+.card {
+  padding: 40px;
+  border-radius: 24px;
+  max-width: 600px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  backdrop-filter: blur(4px);
+  background: rgba(255, 240, 248, 0.35);
+  border: 1px solid rgba(255, 192, 203, 0.5);
+  box-shadow: 0 8px 30px rgba(255, 150, 170, 0.4);
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.text {
+  color: #d64f84;
+  font-size: 20px;
+  line-height: 1.8;
+}
+
+.button {
+  margin-top: 30px;
+  background: linear-gradient(135deg, #ff85b3, #ffaad5);
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 40px;
+  font-size: 18px;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 6px 20px rgba(255, 105, 135, 0.5);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Адаптивность для экранов до 600px */
+@media (max-width: 600px) {
+  .card {
+    padding: 20px;
+    width: 90%;
+    max-width: none;
+  }
+
+  .text p {
+    font-size: 1rem;
+  }
+
+  .button {
+    font-size: 1rem;
+    padding: 10px 20px;
+  }
+}
+
+
+.button::before {
+  content: \"\";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: rgba(255,255,255,0.3);
+  transform: skewX(-20deg);
+  transition: left 0.5s;
+}
+
+.button:hover::before {
+  left: 125%;
+}
+
+.button:hover {
+  background: linear-gradient(135deg, #ff6fa4, #ff9dc6);
+  box-shadow: 0 8px 25px rgba(255, 105, 135, 0.6);
+}
+
+.heart-beat {
+  animation: heartBeat 1.8s infinite;
+}
+
+@keyframes heartBeat {
+  0%, 100% { transform: scale(1); }
+  14% { transform: scale(1.1); }
+  28% { transform: scale(1); }
+  42% { transform: scale(1.1); }
+  70% { transform: scale(1); }
+}
+
+/* Падающие лепестки */
+.petal {
+  position: fixed;
+  top: -20px;
+  width: 14px;
+  height: 14px;
+  background: radial-gradient(circle at 30% 30%, #ffc2d4, #ff9ebf);
+  border-radius: 50% 50% 50% 0;
+  opacity: 0.8;
+  transform: rotate(45deg);
+  animation-name: fall;
+  animation-timing-function: ease-in-out;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(100vh) rotate(360deg);
+  }
+}
